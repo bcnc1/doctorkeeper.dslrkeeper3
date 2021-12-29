@@ -5,7 +5,7 @@
     android:layout_marginLeft="3dp"
     android:orientation="horizontal">
 
-    <com.doctorkeeper.dslrkeeper2022.view.AspectRatioImageView
+    <com.doctorkeeper.dslrkeepervegas.view.AspectRatioImageView
         android:id="@+id/thumb_image"
         android:layout_width="100dp"
         android:layout_height="100dp"

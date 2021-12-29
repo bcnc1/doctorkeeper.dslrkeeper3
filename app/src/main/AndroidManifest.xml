@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.doctorkeeper.dslrkeeper2022"
-    android:versionCode="1"
-    android:versionName="0.0.1">
+    package="com.doctorkeeper.dslrkeepervegas"
+    android:versionCode="3"
+    android:versionName="0.0.3">
 
     <uses-feature android:name="android.hardware.usb.host" />
 
@@ -30,23 +30,23 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
         <service
-            android:name="com.doctorkeeper.dslrkeeper2022.services.RetryUploadIntentService"
+            android:name="com.doctorkeeper.dslrkeepervegas.services.RetryUploadIntentService"
             android:exported="false"></service>
         <service
-            android:name="com.doctorkeeper.dslrkeeper2022.services.ErrorFileUploadService"
+            android:name="com.doctorkeeper.dslrkeepervegas.services.ErrorFileUploadService"
             android:exported="false" />
 
-        <activity android:name="com.doctorkeeper.dslrkeeper2022.activities.FileExploreActivity" />
+        <activity android:name="com.doctorkeeper.dslrkeepervegas.activities.FileExploreActivity" />
 
         <service
-            android:name="com.doctorkeeper.dslrkeeper2022.services.PictureIntentService"
+            android:name="com.doctorkeeper.dslrkeepervegas.services.PictureIntentService"
             android:exported="false" />
         <service
-            android:name="com.doctorkeeper.dslrkeeper2022.services.VideoIntentService"
+            android:name="com.doctorkeeper.dslrkeepervegas.services.VideoIntentService"
             android:exported="false" />
 
         <activity
-            android:name="com.doctorkeeper.dslrkeeper2022.MainActivity"
+            android:name="com.doctorkeeper.dslrkeepervegas.MainActivity"
             android:configChanges="orientation"
             android:label="@string/launcher_label"
             android:launchMode="singleTask"
@@ -67,7 +67,7 @@
                 android:resource="@xml/device_filter" />
         </activity>
         <activity
-            android:name="com.doctorkeeper.dslrkeeper2022.activities.AppSettingsActivity"
+            android:name="com.doctorkeeper.dslrkeepervegas.activities.AppSettingsActivity"
             android:label="@string/activity_app_settings_title"
             android:screenOrientation="sensorLandscape" />
 <!--        <activity android:name="com.doctorkeeper.dslrkeeper.activities.LaunchCameraActivity" />-->
@@ -95,7 +95,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.doctorkeeper.dslrkeeper2022"
+            android:authorities="com.doctorkeeper.dslrkeepervegas"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

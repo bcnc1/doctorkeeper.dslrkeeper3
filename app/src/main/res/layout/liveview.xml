@@ -18,7 +18,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <com.doctorkeeper.dslrkeeper2022.PictureView
+  <com.doctorkeeper.dslrkeepervegas.PictureView
     android:id="@+id/liveView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>

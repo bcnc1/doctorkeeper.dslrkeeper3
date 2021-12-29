@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.doctorkeeper.dslrkeeper2022.activities.FileExploreActivity"
+    tools:context="com.doctorkeeper.dslrkeepervegas.activities.FileExploreActivity"
     android:orientation="vertical">
 
    <!-- <FrameLayout

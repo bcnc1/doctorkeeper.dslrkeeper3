@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <com.doctorkeeper.dslrkeeper2022.PictureView
+  <com.doctorkeeper.dslrkeepervegas.PictureView
     android:id="@+id/image1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center">
-  </com.doctorkeeper.dslrkeeper2022.PictureView>
+  </com.doctorkeeper.dslrkeepervegas.PictureView>
 
   <ProgressBar
     android:id="@+id/progress"
