@@ -16,8 +16,8 @@
 <resources>
 
     <!-- App specific, need to be overridden -->
-    <string name="app_name">DSLR Keeper VEGAS</string>
-    <string name="launcher_label">DSLR Keeper VEGAS</string>
+    <string name="app_name">DSLR Keeper2</string>
+    <string name="launcher_label">DSLR Keeper2</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
 

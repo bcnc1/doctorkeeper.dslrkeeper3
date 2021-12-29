@@ -6,7 +6,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     defaultConfig {
-        applicationId 'com.doctorkeeper.dslrkeepervegas'
+        applicationId 'com.doctorkeeper.dslrkeeper2022'
         minSdkVersion 19
         targetSdkVersion 30
     }
