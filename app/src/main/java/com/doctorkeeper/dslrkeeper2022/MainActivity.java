@@ -4,14 +4,17 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.hardware.usb.UsbManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -26,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.doctorkeeper.dslrkeeper2022.activities.AppSettingsActivity;
+import com.doctorkeeper.dslrkeeper2022.madamfive.BlabAPI;
 import com.doctorkeeper.dslrkeeper2022.madamfive.MadamfiveAPI;
 import com.doctorkeeper.dslrkeeper2022.ptp.Camera;
 import com.doctorkeeper.dslrkeeper2022.ptp.Camera.CameraListener;
@@ -75,14 +79,36 @@ public class MainActivity extends SessionActivity implements CameraListener {
 
     private Boolean fixedLandscapeExtraOption;
 
+    private final BroadcastReceiver usbOnReciever = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.w(TAG,"usbOnReciever === "+intent);
+            new android.os.Handler().postDelayed(
+                    () -> BlabAPI.isCameraOn = true,
+                    2000);
+        }
+    };
+
+    private final BroadcastReceiver usbOffReciever = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.w(TAG,"usbOffReciever === "+intent);
+            BlabAPI.isCameraOn = false;
+        }
+    };
+
     @Override
     public Camera getCamera() {        return camera;    }
 
     @Override
     public void setSessionView(SessionView view) {
         sessionFrag = view;
-
-        if (cameraListenerInitialized == false) {
+        IntentFilter on = new IntentFilter(UsbManager.ACTION_USB_DEVICE_ATTACHED);
+        IntentFilter off = new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED);
+        MadamfiveAPI.getContext().registerReceiver(usbOnReciever,on);
+        MadamfiveAPI.getContext().registerReceiver(usbOffReciever,off);
+        Log.i(TAG,"isCameraOn = "+ BlabAPI.isCameraOn);
+        if (!cameraListenerInitialized && BlabAPI.isCameraOn) {
             Log.i(TAG,"Camera Initialized ==== ");
             ptp.setCameraListener(this);
             ptp.initialize(this, getIntent());
