@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.doctorkeeper.dslrkeeper3.view.dslr;
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
@@ -41,6 +42,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.doctorkeeper.dslrkeeper3.Constants;
 import com.doctorkeeper.dslrkeeper3.R;
 import com.doctorkeeper.dslrkeeper3.madamfive.BlabAPI;
 import com.doctorkeeper.dslrkeeper3.madamfive.MadamfiveAPI;
@@ -512,7 +514,7 @@ public class DSLRFragment extends SessionFragment implements
     private void sendPhoto(int objectHandle, ObjectInfo info, Bitmap thumb, Bitmap bitmap) throws UnsupportedEncodingException {
 //        Log.d(TAG, "sendPhoto");
         currentObjectHandle = 0;
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HHmmssSSS").format(new Date());
+        @SuppressLint("SimpleDateFormat") String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HHmmssSSS").format(new Date());
         String HospitalId = SmartFiPreference.getHospitalId(MadamfiveAPI.getActivity());
         String PatientName = SmartFiPreference.getSfPatientName(MadamfiveAPI.getActivity());
         String PatientChart = SmartFiPreference.getPatientChart(MadamfiveAPI.getActivity());
@@ -520,13 +522,10 @@ public class DSLRFragment extends SessionFragment implements
         String DoctorNumber = SmartFiPreference.getSfDoctorNumber(MadamfiveAPI.getActivity());
 
         if (doctorSelectExtraOption && DoctorName != null && DoctorName.length() != 0) {
-            mFileName = URLEncoder.encode(HospitalId+"_"+PatientName+"_"+PatientChart+"_"+DoctorName+"_"+DoctorNumber+"_"+timeStamp+".jpg", "UTF-8");
+            mFileName = URLEncoder.encode(HospitalId+Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+DoctorName+Constants.Storage.SPLITER+DoctorNumber+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
         } else {
-            mFileName = URLEncoder.encode(HospitalId+"_"+PatientName+"_"+PatientChart+"_"+timeStamp+".jpg", "UTF-8");
+            mFileName = URLEncoder.encode(HospitalId+Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
         }
-
-        Log.i(TAG, "mFileName:" + mFileName);
-
 
         mFile = new File(getActivity().getExternalFilesDir(Environment.getExternalStorageState())  + File.separator + mFileName);
 

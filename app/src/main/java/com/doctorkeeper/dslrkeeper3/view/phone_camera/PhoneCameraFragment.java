@@ -25,6 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.doctorkeeper.dslrkeeper3.Constants;
 import com.doctorkeeper.dslrkeeper3.R;
 //import com.doctorkeeper.dslrkeeper.activities.LaunchCameraActivity;
 //import com.doctorkeeper.dslrkeeper.activities.LaunchVrecordActivity;
@@ -227,7 +228,7 @@ private final BroadcastReceiver usbOnReciever = new BroadcastReceiver() {
                 mSound.release();
                 Bitmap picture = cameraKitImage.getBitmap();
                 String timeStamp = new SimpleDateFormat("yyyy-MM-dd-HHmmssSSS").format(new Date());
-                mFileName = DEVICE + "_" + timeStamp+".jpg";
+                mFileName = DEVICE + Constants.Storage.SPLITER + timeStamp+".jpg";
                 if(fixedPortraitExtraOption){
                     int orientationValue = orientationListener.rotation;
                     Bitmap picture2 = rotateImage(picture,orientationValue);

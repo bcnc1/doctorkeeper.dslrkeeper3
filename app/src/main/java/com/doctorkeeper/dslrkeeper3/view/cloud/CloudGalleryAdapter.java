@@ -130,7 +130,7 @@ public class CloudGalleryAdapter extends BaseAdapter {
         String d1 = holder.photo.get("fileName");
         holder.date.setText("");
         try {
-            String[] d2 = d1.split("_");
+            String[] d2 = d1.split(Constants.Storage.SPLITER);
             String d3 = d2[2];
             String d4 = d3.substring(5, 15);
             String d5 = d4.replaceAll("-", " ");

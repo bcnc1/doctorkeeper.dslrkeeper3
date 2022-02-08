@@ -31,6 +31,7 @@ public class Constants {
     public static final class Storage{
 //        public static final String BASE_URL = "https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_3de4a999-ff5c-416a-ad30-77fcd4f9383f";
           public static final String BASE_URL = "http://ssproxy.ucloudbiz.olleh.com/v1/AUTH_8c4583d1-b030-4cc2-8e65-7e747563dbeb";
+          public static final String SPLITER = "ba47bf9016134382";
 
     }
 

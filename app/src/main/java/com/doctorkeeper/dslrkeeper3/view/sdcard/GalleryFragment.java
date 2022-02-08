@@ -42,6 +42,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.doctorkeeper.dslrkeeper3.Constants;
 import com.doctorkeeper.dslrkeeper3.R;
 import com.doctorkeeper.dslrkeeper3.madamfive.MadamfiveAPI;
 import com.doctorkeeper.dslrkeeper3.models.PhotoModel;
@@ -685,13 +686,13 @@ public class GalleryFragment extends SessionFragment
 
         if (DSLRFragment.doctorSelectExtraOption && DoctorName != null && DoctorName.length() != 0) {
             try {
-                mFileName = URLEncoder.encode(HospitalId+"_"+PatientName+"_"+PatientChart+"_"+DoctorName+"_"+DoctorNumber+"_"+timeStamp+".jpg", "UTF-8");
+                mFileName = URLEncoder.encode(HospitalId+ Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+DoctorName+Constants.Storage.SPLITER+DoctorNumber+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         } else {
             try {
-                mFileName = URLEncoder.encode(HospitalId+"_"+PatientName+"_"+PatientChart+"_"+timeStamp+".jpg", "UTF-8");
+                mFileName = URLEncoder.encode(HospitalId+Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
