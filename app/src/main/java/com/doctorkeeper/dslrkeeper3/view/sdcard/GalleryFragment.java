@@ -683,16 +683,16 @@ public class GalleryFragment extends SessionFragment
         String PatientChart = SmartFiPreference.getPatientChart(MadamfiveAPI.getActivity());
         String DoctorName = SmartFiPreference.getSfDoctorName(MadamfiveAPI.getActivity());
         String DoctorNumber = SmartFiPreference.getSfDoctorNumber(MadamfiveAPI.getActivity());
-
+        String Separator = Constants.Storage.SPLITER;
         if (DSLRFragment.doctorSelectExtraOption && DoctorName != null && DoctorName.length() != 0) {
             try {
-                mFileName = URLEncoder.encode(HospitalId+ Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+DoctorName+Constants.Storage.SPLITER+DoctorNumber+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
+                mFileName = URLEncoder.encode(HospitalId+ Separator+PatientName+Separator+PatientChart+Separator+DoctorName+Separator+DoctorNumber+Separator+timeStamp+".jpg", "UTF-8").replace("+", "%20");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         } else {
             try {
-                mFileName = URLEncoder.encode(HospitalId+Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
+                mFileName = URLEncoder.encode(HospitalId+Separator+PatientName+Separator+PatientChart+Separator+timeStamp+".jpg", "UTF-8").replace("+", "%20");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

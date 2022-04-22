@@ -520,11 +520,11 @@ public class DSLRFragment extends SessionFragment implements
         String PatientChart = SmartFiPreference.getPatientChart(MadamfiveAPI.getActivity());
         String DoctorName = SmartFiPreference.getSfDoctorName(MadamfiveAPI.getActivity());
         String DoctorNumber = SmartFiPreference.getSfDoctorNumber(MadamfiveAPI.getActivity());
-
+        String Separator = Constants.Storage.SPLITER;
         if (doctorSelectExtraOption && DoctorName != null && DoctorName.length() != 0) {
-            mFileName = URLEncoder.encode(HospitalId+Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+DoctorName+Constants.Storage.SPLITER+DoctorNumber+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
+            mFileName = URLEncoder.encode(HospitalId+Separator+PatientName+Separator+PatientChart+Separator+DoctorName+Separator+DoctorNumber+Separator+timeStamp+".jpg", "UTF-8").replace("+", "%20");
         } else {
-            mFileName = URLEncoder.encode(HospitalId+Constants.Storage.SPLITER+PatientName+Constants.Storage.SPLITER+PatientChart+Constants.Storage.SPLITER+timeStamp+".jpg", "UTF-8").replace("+", "%20");
+            mFileName = URLEncoder.encode(HospitalId+Separator+PatientName+Separator+PatientChart+Separator+timeStamp+".jpg", "UTF-8").replace("+", "%20");
         }
 
         mFile = new File(getActivity().getExternalFilesDir(Environment.getExternalStorageState())  + File.separator + mFileName);

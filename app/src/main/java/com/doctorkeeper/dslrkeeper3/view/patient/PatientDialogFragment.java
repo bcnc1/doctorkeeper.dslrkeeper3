@@ -109,6 +109,7 @@ public class PatientDialogFragment extends DialogFragment {
                     if (keyword == null || keyword.length() == 0) {
                         Toast.makeText(getActivity(), "환자명 또는 차트번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                         patient_list_progressBar.setVisibility(View.INVISIBLE);
+                        return;
                     }
 
                     nameTextView.clearFocus();
@@ -130,16 +131,11 @@ public class PatientDialogFragment extends DialogFragment {
                 HashMap<String, String> patientInfo = (HashMap<String, String>) adapterView.getItemAtPosition(i);
                 String name = patientInfo.get("name");
                 Toast.makeText(getActivity(), name + "님이 선택되었습니다", Toast.LENGTH_LONG).show();
-//
-//                SmartFiPreference.setPatientId(getActivity(), patientInfo.get("categoryId"));
-//                SmartFiPreference.setSfPatientCustNo(getActivity(),patientInfo.get("custNo"));
+
                 SmartFiPreference.setSfPatientName(getActivity(), name);
                 SmartFiPreference.setPatientChart(getActivity(),patientInfo.get("chrtNo"));
                 Log.i(TAG, "getSfPatientName: " + SmartFiPreference.getSfPatientName(MadamfiveAPI.getActivity()));
                 Log.i(TAG, "getPatientChart: " + SmartFiPreference.getPatientChart(MadamfiveAPI.getActivity()));
-//                SmartFiPreference.setSfPatientCustNo(getActivity(), patientInfo.get("custNo"));
-//                SmartFiPreference.setPatientChart(getActivity(),patientInfo.get("chartNumber"));
-//                SmartFiPreference.setSfPatientName(getActivity(),name);
 
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.fragment_container, DSLRFragment.newInstance());
@@ -157,12 +153,11 @@ public class PatientDialogFragment extends DialogFragment {
 
         ArrayList<HashMap<String, String>> patientInfoList = new ArrayList<HashMap<String, String>>();
 
-        if (searchChart == null || searchChart.length() == 0 && searchName == null || searchName.length() == 0) {
-            Toast.makeText(getActivity(), "이름 또는 차트번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
-            patient_list_progressBar.setVisibility(View.INVISIBLE);
-            return;
-
-        }
+//        if ((searchChart == null || searchChart.length() == 0) && (searchName == null || searchName.length() == 0)) {
+//            Toast.makeText(getActivity(), "이름 또는 차트번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
+//            patient_list_progressBar.setVisibility(View.INVISIBLE);
+//            return;
+//        }
 
         MadamfiveAPI.getPatientList(searchName, searchChart, new JsonHttpResponseHandler(){
 
